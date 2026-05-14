@@ -1,40 +1,309 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mystic Aura Rings ✦ Spiritual & Healing Crystal Rings</title>
-    <style>
-        :root {
-            --gold: #c9a84c;
-            --gold-light: #e0c978;
-            --dark: #1a1a1a;
-            --darker: #0f0f0f;
-            --light: #f5f0e8;
-            --cream: #faf7f0;
-            --accent: #8b5cf6;
-            --accent-light: #a78bfa;
-            --text: #2c2c2c;
-            --text-light: #6b6b6b;
-            --white: #ffffff;
-            --border: #e8e0d5;
-            --success: #2d6a4f;
-            --danger: #c0392b;
-            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06);
-            --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            --shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.12);
-            --radius: 12px;
-            --radius-sm: 8px;
-            --transition: 0.25s ease;
-        }
+<style>
+:root {
+    --gold: #d62828;              /* Main red */
+    --gold-light: #ff4d4d;        /* Light red */
+    --dark: #0f0f0f;              /* Deep black */
+    --darker: #000000;            /* Pure black */
+    --light: #f5f5f5;             /* Smoke white */
+    --cream: #ededed;             /* Soft smoke white */
+    --accent: #b30000;            /* Dark red accent */
+    --accent-light: #ff6666;      /* Accent light */
+    --text: #1f1f1f;
+    --text-light: #666666;
+    --white: #ffffff;
+    --border: #d9d9d9;
+    --success: #2d6a4f;
+    --danger: #ff1e1e;
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.15);
+    --shadow: 0 4px 20px rgba(0, 0, 0, 0.18);
+    --shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.25);
 
-        html {
+    --radius: 12px;
+    --radius-sm: 8px;
+    --transition: 0.25s ease;
+}
+
+/* ── BODY ── */
+body {
+    font-family: 'Segoe UI', 'Inter', system-ui, sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ── TOP BAR ── */
+.top-bar {
+    background: var(--darker);
+    color: #ccc;
+    font-size: 0.8rem;
+    padding: 8px 0;
+    text-align: center;
+    letter-spacing: 0.5px;
+}
+
+.top-bar span {
+    color: var(--gold-light);
+    font-weight: 600;
+}
+
+/* ── HEADER ── */
+header {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: var(--shadow-sm);
+}
+
+.logo-icon {
+    width: 44px;
+    height: 44px;
+    background: linear-gradient(135deg, var(--gold), #7a0000);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: #fff;
+    box-shadow: 0 2px 10px rgba(214, 40, 40, 0.4);
+}
+
+.logo-text span {
+    color: var(--gold);
+}
+
+/* ── NAVIGATION ── */
+nav {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+}
+
+.nav-inner a {
+    color: var(--text);
+    border-bottom: 2px solid transparent;
+    transition: var(--transition);
+}
+
+.nav-inner a:hover,
+.nav-inner a.active {
+    color: var(--gold);
+    border-bottom-color: var(--gold);
+}
+
+/* ── HERO SECTION ── */
+.hero {
+    background: linear-gradient(
+        160deg,
+        #000000 0%,
+        #1a1a1a 40%,
+        #330000 100%
+    );
+    color: #fff;
+    text-align: center;
+    padding: 70px 24px 60px;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: -60px;
+    right: -80px;
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(214, 40, 40, 0.25) 0%, transparent 70%);
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    bottom: -40px;
+    left: -60px;
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 77, 77, 0.2) 0%, transparent 70%);
+}
+
+.hero h1 span {
+    color: var(--gold-light);
+}
+
+.hero-stars {
+    color: var(--gold-light);
+}
+
+/* ── PRODUCT CARDS ── */
+.product-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    border: 1px solid var(--border);
+}
+
+.product-card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-4px);
+}
+
+/* Product Backgrounds */
+.product-img.ring1 {
+    background: linear-gradient(135deg, #1a1a1a, #3b0000);
+}
+
+.product-img.ring2 {
+    background: linear-gradient(135deg, #2b2b2b, #550000);
+}
+
+.product-img.ring3 {
+    background: linear-gradient(135deg, #111111, #7a0000);
+}
+
+.product-img.ring4 {
+    background: linear-gradient(135deg, #242424, #990000);
+}
+
+.product-img.ring5 {
+    background: linear-gradient(135deg, #1c1c1c, #cc0000);
+}
+
+.product-img.ring6 {
+    background: linear-gradient(135deg, #2a2a2a, #ff1a1a);
+}
+
+/* ── BADGES ── */
+.product-badge {
+    background: var(--accent);
+    color: #fff;
+}
+
+.product-badge.bestseller {
+    background: var(--gold);
+    color: #fff;
+}
+
+/* ── BUTTONS ── */
+.btn-gold {
+    background: linear-gradient(135deg, var(--gold), #7a0000);
+    color: #fff;
+    box-shadow: 0 4px 14px rgba(214, 40, 40, 0.35);
+}
+
+.btn-gold:hover {
+    background: linear-gradient(135deg, #ff1e1e, #990000);
+    transform: translateY(-1px);
+}
+
+.btn-outline {
+    border: 2px solid var(--gold);
+    color: var(--dark);
+    background: transparent;
+}
+
+.btn-outline:hover {
+    background: var(--gold);
+    color: #fff;
+}
+
+/* ── FEATURES ── */
+.feature-item {
+    background: var(--white);
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+}
+
+/* ── TESTIMONIALS ── */
+.testimonials {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+.testimonial-card {
+    background: #f5f5f5;
+    border: 1px solid #dddddd;
+}
+
+.testimonial-card .stars {
+    color: var(--gold);
+}
+
+/* ── CART BUTTON ── */
+.cart-btn {
+    border: 2px solid var(--gold);
+    background: #fff;
+    color: var(--dark);
+    transition: var(--transition);
+}
+
+.cart-btn:hover {
+    background: var(--gold);
+    color: #fff;
+}
+
+.cart-count {
+    background: var(--danger);
+    color: #fff;
+}
+
+/* ── MODALS ── */
+.modal {
+    background: #fff;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-lg);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    border: 2px solid #d9d9d9;
+    transition: var(--transition);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px rgba(214, 40, 40, 0.15);
+}
+
+/* ── PAYMENT DETAIL FIX ── */
+.payment-detail {
+    display: none;
+    background: #f5f5f5;
+    padding: 14px;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #111;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #d62828;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #ff1e1e;
+}
+</style>        html {
             scroll-behavior: smooth;
         }
 
