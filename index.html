@@ -22,7 +22,26 @@ nav a{color:#fff;text-decoration:none;margin-left:26px;font-weight:600;padding-b
 nav a:hover,nav a.active{color:var(--red-light);border-color:var(--red-light)}
 .menu-btn{display:none;background:none;border:2px solid #fff;color:#fff;font-size:1.4rem;padding:2px 12px;border-radius:8px;cursor:pointer}
 
-.hero{min-height:92vh;background:linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.7)),linear-gradient(160deg,#000,#1a1a1a 50%,#330000);display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;padding:40px}
+.hero{position:relative;isolation:isolate;overflow:hidden;min-height:92vh;background:#000;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;padding:40px}
+.hero::before{content:"";position:absolute;inset:-12px;z-index:-2;background:url("./images/Silver Jade Stone Ring, Men Ottoman Style Engraved Ring, Men Natural Green Jade Ring, Turkish Handmade Sterling Silver Ring, Gift For Him.jpeg") center/cover;filter:blur(3px) saturate(1.1);animation:drift 22s ease-in-out infinite alternate}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(0,0,0,.35),rgba(0,0,0,.55) 70%,rgba(40,0,0,.75))}
+@keyframes drift{to{transform:scale(1.08)}}
+.hero h1,.hero p{text-shadow:0 3px 14px rgba(0,0,0,.7)}
+.badges{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:34px}
+.badges span{background:rgba(0,0,0,.45);border:1px solid rgba(255,255,255,.35);backdrop-filter:blur(6px);padding:7px 16px;border-radius:50px;font-size:.9rem}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:26px;counter-reset:s}
+.step{background:#fff;border-radius:var(--radius);padding:30px 24px;box-shadow:var(--shadow);position:relative;counter-increment:s}
+.step::before{content:counter(s);position:absolute;top:-16px;left:22px;width:38px;height:38px;border-radius:50%;background:var(--red);color:#fff;display:grid;place-items:center;font-weight:bold}
+.step h3{margin-bottom:6px}.step p{color:var(--gray)}
+.info2{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px}
+.card ul{margin:10px 0 0 20px;color:#444}
+details{background:#fff;border-radius:12px;box-shadow:var(--shadow);margin:0 auto 14px;max-width:820px;padding:18px 22px}
+summary{cursor:pointer;font-weight:bold;list-style:none;display:flex;justify-content:space-between;gap:12px}
+summary::after{content:"+";color:var(--red);font-size:1.4rem;line-height:1}
+details[open] summary::after{content:"−"}
+details p{margin-top:12px;color:#555}
+.size{display:flex;gap:8px;align-items:center;margin:14px 0;flex-wrap:wrap}
+.size select{padding:10px 14px;border:2px solid #ddd;border-radius:10px;font-size:1rem}
 .hero h1{font-size:4.5rem;line-height:1.1;margin-bottom:25px}
 .hero h1 span{color:var(--red-light)}
 .hero p{font-size:1.2rem;color:#ddd;margin:0 auto 35px;max-width:700px}
@@ -67,11 +86,10 @@ nav a:hover,nav a.active{color:var(--red-light);border-color:var(--red-light)}
 .features{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:30px;perspective:1000px}
 .feature{background:#fff;padding:32px 24px;border-radius:var(--radius);text-align:center;box-shadow:var(--shadow);transform-style:preserve-3d;transition:transform .15s,box-shadow .3s;will-change:transform}
 .feature:hover{box-shadow:0 22px 45px rgba(0,0,0,.28)}
-.icon3d{width:90px;height:90px;margin:0 auto 22px;transform-style:preserve-3d;animation:spin 7s linear infinite;transform:translateZ(40px)}
-.icon3d i{position:absolute;inset:0;display:grid;place-items:center;font-style:normal;font-size:3.4rem;border-radius:50%;background:radial-gradient(circle at 30% 25%,#fff,#ffd6d6 40%,#c93030);box-shadow:inset -6px -8px 14px rgba(0,0,0,.35),0 10px 18px rgba(0,0,0,.3);backface-visibility:visible}
-.icon3d i:nth-child(2){transform:translateZ(-8px);filter:brightness(.7)}
-.feature:hover .icon3d{animation-duration:2s}
-@keyframes spin{to{transform:translateZ(40px) rotateY(360deg)}}
+.icon3d{width:110px;height:110px;margin:0 auto 24px;position:relative;transform-style:preserve-3d;animation:swing 5s ease-in-out infinite;filter:drop-shadow(0 16px 14px rgba(0,0,0,.35))}
+.icon3d svg{position:absolute;inset:0;width:100%;height:100%}
+.feature:hover .icon3d{animation-duration:1.6s}
+@keyframes swing{0%,100%{transform:translateZ(40px) rotateY(-38deg) rotateX(8deg)}50%{transform:translateZ(40px) rotateY(38deg) rotateX(-6deg) translateY(-6px)}}
 .feature{position:relative}
 .feature h3{margin-bottom:8px;transform:translateZ(30px)}
 .feature p{transform:translateZ(20px);color:var(--gray)}
@@ -138,18 +156,19 @@ nav a{margin:10px 0}
   <button class="menu-btn" id="menuBtn" aria-label="Open menu">☰</button>
   <nav id="nav">
     <a href="#home">Home</a><a href="#about">About</a><a href="#products">Rings</a>
-    <a href="#why">Why Us</a><a href="#reviews">Reviews</a><a href="#payments">Payments</a><a href="#contact">Contact</a>
+    <a href="#why">Why Us</a><a href="#order">How To Order</a><a href="#reviews">Reviews</a><a href="#payments">Payments</a><a href="#faq">FAQ</a><a href="#contact">Contact</a>
   </nav>
 </header>
 
 <section class="hero" id="home">
   <div>
     <h1>Wear Your <span>Destiny</span></h1>
-    <p>Handcrafted rings set with crystals and made with intention, for protection, prosperity, love and luck.</p>
+    <p>Handcrafted men's and women's rings in sterling silver and natural stones, made in UGANDA and worn for Wealth, Work Promotion, Protection, Prosperity, Love and Luck.</p>
     <div class="row">
       <a href="#products" class="btn">Explore The Collection</a>
       <a href="#" class="btn ghost" data-wa="Hello Jajja Rings, I have a question about your rings.">Chat With Us</a>
     </div>
+    <div class="badges"><span> Natural stones</span><span> Moon cleansed</span><span> Order on WhatsApp</span><span> Delivery arranged per order</span></div>
   </div>
 </section>
 
@@ -158,11 +177,11 @@ nav a{margin:10px 0}
     <p>Every ring is made by hand and chosen to match an intention you carry with you.</p></div>
   <div class="about">
     <div class="card"><h3>Made With Intention</h3>
-      <p>Jajja Rings are more than jewelry. Many wearers treat them as talismans of strength, protection and possibility.</p>
+      <p>Jajja Rings are more than jewelry. Many wearers treat them as talismans of wealth, strength, protection and possibility.</p>
       <p>Each ring is cleansed and set aside with a focused intention before it is sent to you.</p></div>
     <div class="card"><h3>Your Energy, Your Story</h3>
-      <p>Whether you are seeking prosperity, a fresh start, love, protection or luck, there is a ring that speaks to that intention.</p>
-      <p>Tap any ring below to see it close up and order it in a minute on WhatsApp.</p></div>
+      <p>Whether you are seeking prosperity, wealth, a fresh start, love, protection or luck, there is a ring that speaks to that intention.</p>
+      <p>Close up and order it in a minute.</p></div>
   </div>
 </section>
 
@@ -177,12 +196,12 @@ nav a{margin:10px 0}
 
 <section class="section reveal" id="why">
   <div class="section-title"><h2>Why Choose Jajja Rings</h2>
-    <p>Move your cursor over the icons and watch them turn.</p></div>
+    <p>Move your cursor over the cards and watch the icons turn.</p></div>
   <div class="features">
-    <div class="feature"><div class="icon3d"><i>🌕</i><i></i></div><h3>Moon Cleansed</h3><p>Every ring is cleansed under the full moon before it ships.</p></div>
-    <div class="feature"><div class="icon3d"><i>💎</i><i></i></div><h3>Real Stones</h3><p>Set with natural stones, chosen one by one.</p></div>
-    <div class="feature"><div class="icon3d"><i>🔮</i><i></i></div><h3>Set With Intention</h3><p>Choose a ring for love, luck, wealth or protection.</p></div>
-    <div class="feature"><div class="icon3d"><i>🛡️</i><i></i></div><h3>Protection Symbol</h3><p>A ring many wear as a daily reminder of strength.</p></div>
+    <div class="feature"><div class="icon3d" data-i="moon"></div><h3>Moon Cleansed</h3><p>Every ring is cleansed under the full moon before it ships.</p></div>
+    <div class="feature"><div class="icon3d" data-i="gem"></div><h3>Real Stones</h3><p>Set with natural stones, chosen one by one.</p></div>
+    <div class="feature"><div class="icon3d" data-i="star"></div><h3>Set With Intention</h3><p>Choose a ring for love, luck, wealth or protection.</p></div>
+    <div class="feature"><div class="icon3d" data-i="shield"></div><h3>Protection Symbol</h3><p>A ring many wear as a daily reminder of strength.</p></div>
   </div>
 </section>
 
@@ -194,6 +213,40 @@ nav a{margin:10px 0}
     <div class="card"><div class="stars">★★★★★</div><p>“Beautiful craftsmanship. The Rose Quartz ring is a gift to myself I keep coming back to.”</p><br><strong>Tanisha Reid</strong></div>
     <div class="card"><div class="stars">★★★★★</div><p>“Solid silver, heavy and well made. Delivery updates came straight to my WhatsApp.”</p><br><strong>Dwayne Thompson</strong></div>
   </div>
+</section>
+
+<section class="section reveal" id="order">
+  <div class="section-title"><h2>How To Order</h2><p>Four simple steps, all handled on WhatsApp.</p></div>
+  <div class="steps">
+    <div class="step"><h3>Choose</h3><p>Open a ring, pick your size and tap Order This Ring.</p></div>
+    <div class="step"><h3>Confirm</h3><p>We reply with availability, final price and delivery cost.</p></div>
+    <div class="step"><h3>Pay</h3><p>Send payment by Mobile Money, Western Union or MoneyGram and share your receipt.</p></div>
+    <div class="step"><h3>Receive</h3><p>We pack your ring and arrange delivery, then share tracking or pickup details.</p></div>
+  </div>
+</section>
+
+<section class="section reveal" style="padding-top:0">
+  <div class="info2">
+    <div class="card"><h3>Finding Your Size</h3>
+      <p>Not sure of your ring size? Any of these work:</p>
+      <ul><li>Wrap a strip of paper around your finger, mark the overlap and send us the length in mm.</li>
+      <li>Measure a ring you already wear that fits the same finger.</li>
+      <li>Visit a local jeweler and send us the size they give you.</li></ul></div>
+    <div class="card"><h3>Caring For Your Ring</h3>
+      <ul><li>Remove it before swimming, cleaning or heavy work.</li>
+      <li>Wipe with a soft dry cloth to keep the silver bright.</li>
+      <li>Keep it away from perfume and harsh chemicals.</li>
+      <li>Store it in a pouch so the stone does not scratch.</li></ul></div>
+  </div>
+</section>
+
+<section class="section reveal" id="faq">
+  <div class="section-title"><h2>Questions We Hear Often</h2></div>
+  <details><summary>Are the stones natural?</summary><p>Ask us about the exact stone and material of the ring you like. We will confirm the details on WhatsApp before you pay.</p></details>
+  <details><summary>Can you ship outside Uganda?</summary><p>Yes, message us your country and we will give you the delivery options and cost for your order.</p></details>
+  <details><summary>How do I pay safely?</summary><p>Message us first on WhatsApp so we can confirm your order and the payment details. After you pay, send the receipt so we can confirm it.</p></details>
+  <details><summary>What if the ring does not fit?</summary><p>Tell us your size before ordering. If it does not fit when it arrives, message us within a few days and we will talk through options.</p></details>
+  <details><summary>Do the rings really bring luck or wealth?</summary><p>Every Jajja Ring is made with intention, cleansed under the full moon and chosen for a purpose: protection, prosperity, love or luck. Wearers often describe feeling more confident, focused and protected. Spiritual results are a guarantee, we put real care into every ring, and we are always on WhatsApp to help you pick the one that fits your intention.</p></details>
 </section>
 
 <section class="cta">
@@ -237,6 +290,8 @@ nav a{margin:10px 0}
       <h3 id="mName"></h3><div class="price" id="mPrice"></div>
       <p id="mDesc"></p>
       <div class="detail"><p><strong>Best for:</strong> <span id="mFor"></span></p><p><strong>Material:</strong> Handmade ring with natural stone</p></div>
+      <div class="size"><label for="mSize"><strong>Ring size:</strong></label>
+        <select id="mSize"><option>Not sure yet</option><option>US 7</option><option>US 8</option><option>US 9</option><option>US 10</option><option>US 11</option><option>US 12</option><option>US 13</option></select></div>
       <a class="btn" id="mOrder" href="#" target="_blank" rel="noopener">Order This Ring</a>
       <div class="count" id="mCount"></div>
     </div>
@@ -266,7 +321,7 @@ const WA="256787329794";
 const wa=t=>`https://wa.me/${WA}?text=${encodeURIComponent(t)}`;
 const rings=[
  {n:"Black Onyx Protection Ring",p:68,f:"Protection",d:"Worn as a shield against negativity and envy. A bold ring for walking in with confidence.",i:"./images/Natural Moonstone Ring , Silver Handmade Ring , Raw Rainbow Moonstone Ring , Turkish Handmade Ring , Ottoman Style Ring , Gift For Him.jpeg"},
- {n:"Citrine Prosperity Ring",p:120,f:"Prosperity and career",d:"Worn by people chasing promotions, new business and fresh financial beginnings.",i:"./images/Men Handmade Ring ,  Green Stone Ring , Sterling Silver Vintage Ring , Men Silver Jewelry , Anniversary Gifts for Him (2).jpeg"},
+ {n:"Citrine Prosperity Ring",p:120,f:"Prosperity and career",d:"Worn by people chasing wealth, promotions, new business and fresh financial beginnings.",i:"./images/Men Handmade Ring ,  Green Stone Ring , Sterling Silver Vintage Ring , Men Silver Jewelry , Anniversary Gifts for Him (2).jpeg"},
  {n:"Rose Quartz Love Ring",p:72,f:"Love and healing",d:"A gentle ring for the heart, worn for emotional healing and open connection.",i:"./images/Yameni Aqeeq Silver Ring for Men, Brown Agate Gemstone Silver Ring, Handmade Mens Ring, 925k Sterling Silver, Mens Aqeeq Rings, Islamic Ring.jpeg"},
  {n:"Green Aventurine Luck Ring",p:75,f:"Luck and opportunity",d:"Worn to welcome lucky breaks, fresh opportunities and unexpected blessings.",i:"./images/Silver Jade Stone Ring, Men Ottoman Style Engraved Ring, Men Natural Green Jade Ring, Turkish Handmade Sterling Silver Ring, Gift For Him.jpeg"}
 ];
@@ -292,8 +347,11 @@ function show(k){
   cur=(k+rings.length)%rings.length;const r=rings[cur];
   $("#mImg").src=r.i;$("#mImg").alt=r.n;$("#mName").textContent=r.n;$("#mPrice").textContent="$"+r.p;
   $("#mDesc").textContent=r.d;$("#mFor").textContent=r.f;$("#mCount").textContent=`Ring ${cur+1} of ${rings.length}`;
-  $("#mOrder").href=wa("Hello Jajja Rings, I want to order the "+r.n+" ($"+r.p+").");
+  setOrder();
 }
+function setOrder(){const r=rings[cur];
+  $("#mOrder").href=wa("Hello Jajja Rings, I want to order the "+r.n+" ($"+r.p+"). Ring size: "+$("#mSize").value+".")}
+$("#mSize").onchange=setOrder;
 const open=m=>{m.classList.add("open");document.body.style.overflow="hidden"};
 const closeAll=()=>{$$(".modal").forEach(m=>m.classList.remove("open"));document.body.style.overflow=""};
 document.addEventListener("click",e=>{
@@ -333,6 +391,23 @@ if(!matchMedia("(prefers-reduced-motion:reduce)").matches)$$(".feature").forEach
   c.onmousemove=e=>{const b=c.getBoundingClientRect(),x=(e.clientX-b.left)/b.width-.5,y=(e.clientY-b.top)/b.height-.5;
     c.style.transform=`rotateY(${x*22}deg) rotateX(${-y*22}deg)`};
   c.onmouseleave=()=>c.style.transform="";
+});
+
+
+/* Solid 3D icons: stacked SVG layers give real depth */
+const G=(id,a,b,c)=>`<linearGradient id="${id}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${a}"/><stop offset=".55" stop-color="${b}"/><stop offset="1" stop-color="${c}"/></linearGradient>`;
+const ICONS={
+moon:(u)=>`<defs>${G("m"+u,"#fff7d6","#f5c542","#a8740a")}</defs><path d="M62 8A44 44 0 1 0 92 66 36 36 0 0 1 62 8Z" fill="url(#m${u})"/><circle cx="38" cy="58" r="6" fill="#00000026"/><circle cx="52" cy="78" r="4" fill="#00000022"/><circle cx="30" cy="38" r="4" fill="#00000022"/><path d="M62 8A44 44 0 0 0 20 36" stroke="#fff" stroke-opacity=".8" stroke-width="3" fill="none" stroke-linecap="round"/>`,
+gem:(u)=>`<defs>${G("g"+u,"#e8fbff","#4fb7e8","#1c4f9c")}</defs><path d="M28 14h44l24 26-46 50L4 40Z" fill="url(#g${u})"/><path d="M4 40h92M28 14l22 76M72 14 50 90M28 14 38 40 50 14 62 40 72 14" stroke="#fff" stroke-opacity=".65" stroke-width="2" fill="none" stroke-linejoin="round"/><path d="M38 40h24L50 90Z" fill="#fff" fill-opacity=".25"/><path d="M28 14h22L38 40 4 40Z" fill="#fff" fill-opacity=".3"/>`,
+star:(u)=>`<defs>${G("s"+u,"#fff0f0","#ff5a6e","#8a0f2a")}</defs><path d="M50 4C55 34 66 45 96 50 66 55 55 66 50 96 45 66 34 55 4 50 34 45 45 34 50 4Z" fill="url(#s${u})"/><path d="M50 4 50 96M4 50H96" stroke="#fff" stroke-opacity=".55" stroke-width="2"/><path d="M50 4C53 24 58 33 70 40" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" stroke-opacity=".85"/><circle cx="82" cy="18" r="4" fill="#ffd9de"/><circle cx="18" cy="80" r="3" fill="#ffd9de"/>`,
+shield:(u)=>`<defs>${G("h"+u,"#f4f4f4","#8b94a3","#2c3340")}${G("k"+u,"#ff8a8a","#d62828","#7a0000")}</defs><path d="M50 4 90 18V50C90 74 72 90 50 98 28 90 10 74 10 50V18Z" fill="url(#h${u})"/><path d="M50 14 80 25V50C80 68 66 80 50 87 34 80 20 68 20 50V25Z" fill="url(#k${u})"/><path d="M34 50l11 12 21-24" stroke="#fff" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M50 4 10 18" stroke="#fff" stroke-width="3" stroke-opacity=".8"/>`};
+$$(".icon3d").forEach((el,n)=>{
+  const f=ICONS[el.dataset.i];let h="";const L=12;
+  for(let i=L;i>=0;i--){
+    const front=i==0,dark=front?1:.45+.04*(L-i);
+    h+=`<svg viewBox="0 0 100 100" style="transform:translateZ(${-i*2.2}px);${front?"":"filter:brightness("+dark+") saturate(1.1)"}" aria-hidden="true">${f(n+"_"+i)}</svg>`;
+  }
+  el.innerHTML=h;el.setAttribute("role","img");el.setAttribute("aria-label",el.dataset.i+" icon");
 });
 
 /* Reveal on scroll */
