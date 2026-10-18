@@ -128,6 +128,14 @@ footer a{color:var(--red-light)}
 .count{color:var(--gray);font-size:.9rem;margin-top:10px}
 .detail{background:var(--smoke);border-radius:12px;padding:16px;margin:16px 0;text-align:left}
 .detail p{margin:4px 0}
+.field{text-align:left;margin:12px 0}
+.field label{font-weight:bold;display:block;margin-bottom:4px}
+.field input{width:100%;padding:12px 14px;border:2px solid #ddd;border-radius:10px;font-size:1rem}
+.field input:focus{border-color:var(--red);outline:0}
+.msg{margin:14px 0;padding:14px;border-radius:12px;background:var(--smoke);text-align:left}
+.msg.ok{background:#e7f7ec;color:#14532d}.msg.err{background:#fdeaea;color:#7f1d1d}
+.spin{display:inline-block;width:18px;height:18px;border:3px solid #ccc;border-top-color:var(--red);border-radius:50%;animation:r 1s linear infinite;vertical-align:-3px;margin-right:8px}
+@keyframes r{to{transform:rotate(360deg)}}
 .toast{position:fixed;bottom:24px;left:50%;transform:translate(-50%,100px);background:#111;color:#fff;padding:12px 26px;border-radius:50px;z-index:4000;transition:transform .3s}
 .toast.show{transform:translate(-50%,0)}
 .top{position:fixed;right:20px;bottom:20px;width:46px;height:46px;border-radius:50%;border:0;background:var(--red);color:#fff;font-size:1.3rem;cursor:pointer;box-shadow:var(--shadow);opacity:0;pointer-events:none;transition:var(--t);z-index:900}
@@ -163,12 +171,12 @@ nav a{margin:10px 0}
 <section class="hero" id="home">
   <div>
     <h1>Wear Your <span>Destiny</span></h1>
-    <p>Handcrafted men's and women's rings in sterling silver and natural stones, made in UGANDA and worn for Wealth, Work Promotion, Protection, Prosperity, Love and Luck.</p>
+    <p>Handcrafted men's and women's rings in sterling silver and natural stones, made in Kampala and worn for protection, prosperity, love and luck.</p>
     <div class="row">
       <a href="#products" class="btn">Explore The Collection</a>
       <a href="#" class="btn ghost" data-wa="Hello Jajja Rings, I have a question about your rings.">Chat With Us</a>
     </div>
-    <div class="badges"><span> Natural stones</span><span> Moon cleansed</span><span> Order on WhatsApp</span><span> Delivery arranged per order</span></div>
+    <div class="badges"><span>💎 Natural stones</span><span>🌕 Moon cleansed</span><span>💬 Order on WhatsApp</span><span>📦 Delivery arranged per order</span></div>
   </div>
 </section>
 
@@ -177,11 +185,11 @@ nav a{margin:10px 0}
     <p>Every ring is made by hand and chosen to match an intention you carry with you.</p></div>
   <div class="about">
     <div class="card"><h3>Made With Intention</h3>
-      <p>Jajja Rings are more than jewelry. Many wearers treat them as talismans of wealth, strength, protection and possibility.</p>
+      <p>Jajja Rings are more than jewelry. Many wearers treat them as talismans of strength, protection and possibility.</p>
       <p>Each ring is cleansed and set aside with a focused intention before it is sent to you.</p></div>
     <div class="card"><h3>Your Energy, Your Story</h3>
-      <p>Whether you are seeking prosperity, wealth, a fresh start, love, protection or luck, there is a ring that speaks to that intention.</p>
-      <p>Close up and order it in a minute.</p></div>
+      <p>Whether you are seeking prosperity, a fresh start, love, protection or luck, there is a ring that speaks to that intention.</p>
+      <p>Tap any ring below to see it close up and order it in a minute on WhatsApp.</p></div>
   </div>
 </section>
 
@@ -246,7 +254,7 @@ nav a{margin:10px 0}
   <details><summary>Can you ship outside Uganda?</summary><p>Yes, message us your country and we will give you the delivery options and cost for your order.</p></details>
   <details><summary>How do I pay safely?</summary><p>Message us first on WhatsApp so we can confirm your order and the payment details. After you pay, send the receipt so we can confirm it.</p></details>
   <details><summary>What if the ring does not fit?</summary><p>Tell us your size before ordering. If it does not fit when it arrives, message us within a few days and we will talk through options.</p></details>
-  <details><summary>Do the rings really bring luck or wealth?</summary><p>Every Jajja Ring is made with intention, cleansed under the full moon and chosen for a purpose: protection, prosperity, love or luck. Wearers often describe feeling more confident, focused and protected. Spiritual results are a guarantee, we put real care into every ring, and we are always on WhatsApp to help you pick the one that fits your intention.</p></details>
+  <details><summary>Do the rings really bring luck or wealth?</summary><p>Every Jajja Ring is made with intention, cleansed under the full moon and chosen for a purpose: protection, prosperity, love or luck. Wearers often describe feeling more confident, focused and protected. Spiritual results are personal and nobody can promise them, but we put real care into every ring, and we are always on WhatsApp to help you pick the one that fits your intention.</p></details>
 </section>
 
 <section class="cta">
@@ -260,21 +268,21 @@ nav a{margin:10px 0}
   <div class="pay">
     <button class="card" data-pay="Western Union"><img src="./images/images.png" alt="Western Union"><h3>Western Union</h3><small>View receiver details</small></button>
     <button class="card" data-pay="MoneyGram"><img src="./images/images (1).png" alt="MoneyGram"><h3>MoneyGram</h3><small>View receiver details</small></button>
-    <a class="card" style="text-decoration:none;color:inherit" href="https://wa.me/256787329794" target="_blank" rel="noopener"><img src="./images/images (2).png" alt="MTN Mobile Money"><h3>MTN Mobile Money</h3><small>Pay on WhatsApp</small></a>
-    <a class="card" style="text-decoration:none;color:inherit" href="https://wa.me/256703591850" target="_blank" rel="noopener"><img src="./images/images.jpeg" alt="Airtel Money"><h3>Airtel Money</h3><small>Pay on WhatsApp</small></a>
+    <button class="card" data-momo="MTN Mobile Money"><img src="./images/images (2).png" alt="MTN Mobile Money"><h3>MTN Mobile Money</h3><small>Pay</small></button>
+    <button class="card" data-momo="Airtel Money"><img src="./images/images.jpeg" alt="Airtel Money"><h3>Airtel Money</h3><small>Pay</small></button>
   </div>
 </section>
 
 <section class="cta" id="contact">
   <h2>Order Directly On WhatsApp</h2>
   <p>Ready to begin? Message Jajja Rings and we will help you choose.</p>
-  <a href="#" class="btn" data-wa="Hello Jajja Rings, I would like to order a ring.">Chat on WhatsApp: +256 787 329 794</a>
+  <a href="#" class="btn" data-wa="Hello Jajja Rings, I would like to order a ring.">Chat on WhatsApp: +256 727 629 6797</a>
 </section>
 
 <footer>
   <h2>Jajja Rings</h2>
   <p>© 2026 Jajja Rings. Handcrafted rings for power, love and transformation.</p>
-  <p>Kampala, Uganda · <a href="https://wa.me/256787329794" target="_blank" rel="noopener">+256 787 329 794</a></p>
+  <p>Kampala, Uganda · <a href="https://wa.me/2567276296797" target="_blank" rel="noopener">+256 727 629 6797</a></p>
 </footer>
 
 <a class="wa-float" href="#" data-wa="Hello Jajja Rings, I need help choosing a ring.">💬 WhatsApp</a>
@@ -304,7 +312,7 @@ nav a{margin:10px 0}
     <h3 id="pTitle"></h3>
     <div class="detail">
       <p><strong>Receiver:</strong> Wamala Gavin Micheal</p>
-      <p><strong>Phone:</strong> +256787329794</p>
+      <p><strong>Phone:</strong> +2567276296797</p>
       <p><strong>Location:</strong> Kampala, Uganda</p>
     </div>
     <div class="pbtns" style="justify-content:center">
@@ -314,14 +322,29 @@ nav a{margin:10px 0}
   </div>
 </div>
 
+<div class="modal" id="momoModal" role="dialog" aria-modal="true">
+  <div class="box small">
+    <button class="x" data-close aria-label="Close">✕</button>
+    <h3 id="moTitle">Pay with Mobile Money</h3>
+    <div id="moForm">
+      <p style="color:#666">Enter your number and amount. A payment request is sent to your phone and you confirm it with your PIN or one-time code.</p>
+      <div class="field"><label for="moPhone">Mobile money number</label><input id="moPhone" type="tel" inputmode="tel" placeholder="e.g. 0771234567" autocomplete="tel"></div>
+      <div class="field"><label for="moEmail">Email (for your receipt)</label><input id="moEmail" type="email" placeholder="you@example.com" autocomplete="email"></div>
+      <div class="field"><label for="moAmt">Amount (UGX)</label><input id="moAmt" type="number" min="1000" step="500" placeholder="e.g. 250000"></div>
+      <button class="btn" id="moGo" style="width:100%;margin-top:8px">Pay</button>
+    </div>
+    <div id="moMsg"></div>
+  </div>
+</div>
+
 <div class="toast" id="toast"></div>
 
 <script>
-const WA="256787329794";
+const WA="2567276296797";
 const wa=t=>`https://wa.me/${WA}?text=${encodeURIComponent(t)}`;
 const rings=[
  {n:"Black Onyx Protection Ring",p:68,f:"Protection",d:"Worn as a shield against negativity and envy. A bold ring for walking in with confidence.",i:"./images/Natural Moonstone Ring , Silver Handmade Ring , Raw Rainbow Moonstone Ring , Turkish Handmade Ring , Ottoman Style Ring , Gift For Him.jpeg"},
- {n:"Citrine Prosperity Ring",p:120,f:"Prosperity and career",d:"Worn by people chasing wealth, promotions, new business and fresh financial beginnings.",i:"./images/Men Handmade Ring ,  Green Stone Ring , Sterling Silver Vintage Ring , Men Silver Jewelry , Anniversary Gifts for Him (2).jpeg"},
+ {n:"Citrine Prosperity Ring",p:120,f:"Prosperity and career",d:"Worn by people chasing promotions, new business and fresh financial beginnings.",i:"./images/Men Handmade Ring ,  Green Stone Ring , Sterling Silver Vintage Ring , Men Silver Jewelry , Anniversary Gifts for Him (2).jpeg"},
  {n:"Rose Quartz Love Ring",p:72,f:"Love and healing",d:"A gentle ring for the heart, worn for emotional healing and open connection.",i:"./images/Yameni Aqeeq Silver Ring for Men, Brown Agate Gemstone Silver Ring, Handmade Mens Ring, 925k Sterling Silver, Mens Aqeeq Rings, Islamic Ring.jpeg"},
  {n:"Green Aventurine Luck Ring",p:75,f:"Luck and opportunity",d:"Worn to welcome lucky breaks, fresh opportunities and unexpected blessings.",i:"./images/Silver Jade Stone Ring, Men Ottoman Style Engraved Ring, Men Natural Green Jade Ring, Turkish Handmade Sterling Silver Ring, Gift For Him.jpeg"}
 ];
@@ -353,10 +376,11 @@ function setOrder(){const r=rings[cur];
   $("#mOrder").href=wa("Hello Jajja Rings, I want to order the "+r.n+" ($"+r.p+"). Ring size: "+$("#mSize").value+".")}
 $("#mSize").onchange=setOrder;
 const open=m=>{m.classList.add("open");document.body.style.overflow="hidden"};
-const closeAll=()=>{$$(".modal").forEach(m=>m.classList.remove("open"));document.body.style.overflow=""};
+const closeAll=()=>{clearInterval(pollT);$$(".modal").forEach(m=>m.classList.remove("open"));document.body.style.overflow=""};
 document.addEventListener("click",e=>{
   const o=e.target.closest("[data-open]");if(o){show(+o.dataset.open);open($("#ringModal"));return}
   const p=e.target.closest("[data-pay]");if(p){payOpen(p.dataset.pay);return}
+  const mo=e.target.closest("[data-momo]");if(mo){momoOpen(mo.dataset.momo);return}
   if(e.target.closest("[data-close]")||e.target.classList.contains("modal"))closeAll();
 });
 $("#prev").onclick=()=>show(cur-1);$("#next").onclick=()=>show(cur+1);
@@ -370,10 +394,40 @@ let method="";
 function payOpen(m){method=m;$("#pTitle").textContent=m+" Details";
   $("#pWa").href=wa(`Hello Jajja Rings, I have sent payment via ${m}. Here are my details.`);open($("#payModal"))}
 $("#copyBtn").onclick=async()=>{
-  const t="Receiver: Wamala Gavin Micheal\nPhone: +256787329794\nLocation: Kampala, Uganda";
+  const t="Receiver: Wamala Gavin Micheal\nPhone: +2567276296797\nLocation: Kampala, Uganda";
   try{await navigator.clipboard.writeText(t);toast("Details copied")}catch{toast("Copy failed. Please copy manually.")}
 };
 function toast(m){const t=$("#toast");t.textContent=m;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),2200)}
+
+
+/* Mobile Money: the real charge and OTP/PIN prompt come from your payment server */
+const PAY_API=""; /* set to your server URL once you have a payment provider, e.g. "https://api.yoursite.com" */
+let moNet="",pollT=null;
+const setMsg=(h,c="")=>{$("#moMsg").innerHTML=h?`<div class="msg ${c}">${h}</div>`:""};
+function momoOpen(n){moNet=n;clearInterval(pollT);$("#moTitle").textContent="Pay with "+n;
+  $("#moForm").style.display="";$("#moGo").disabled=false;setMsg("");open($("#momoModal"))}
+function normPhone(v){let d=v.replace(/\D/g,"");if(d.startsWith("0"))d="256"+d.slice(1);return /^256[37]\d{8}$/.test(d)?d:null}
+$("#moGo").onclick=async()=>{
+  const phone=normPhone($("#moPhone").value),amt=+$("#moAmt").value;
+  if(!phone)return setMsg("Enter a valid Ugandan mobile money number.","err");
+  if(!(amt>=1000))return setMsg("Enter an amount of at least UGX 1,000.","err");
+  if(!PAY_API)return setMsg(`Online payment is not switched on yet, so no money has been taken. Please pay through WhatsApp instead: <a href="${wa(`Hello Jajja Rings, I want to pay UGX ${amt.toLocaleString()} by ${moNet} from ${phone}.`)}" target="_blank" rel="noopener"><strong>Message us to pay</strong></a>.`,"err");
+  $("#moGo").disabled=true;setMsg('<span class="spin"></span>Sending the payment request to your phone...');
+  try{
+    const r=await fetch(PAY_API+"/charge",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({network:moNet,phone,amount:amt,currency:"UGX",email:$("#moEmail").value.trim()})});
+    const d=await r.json();if(!r.ok||!d.reference)throw new Error(d.error||"Could not start payment");
+    $("#moForm").style.display="none";
+    setMsg(`<span class="spin"></span>Check your phone. Approve the request and enter your PIN or the one-time code. Do not close this page.`);
+    let tries=0;pollT=setInterval(async()=>{
+      tries++;try{
+        const s=await (await fetch(PAY_API+"/status?ref="+encodeURIComponent(d.reference))).json();
+        if(s.status=="successful"){clearInterval(pollT);setMsg("Payment received. Thank you! We will message you on WhatsApp to confirm your order.","ok")}
+        else if(s.status=="failed"){clearInterval(pollT);setMsg("The payment was not completed. No money was taken. Please try again.","err");$("#moForm").style.display="";$("#moGo").disabled=false}
+      }catch{}
+      if(tries>40){clearInterval(pollT);setMsg("We have not received confirmation yet. If money left your account, message us on WhatsApp with your receipt.","err");$("#moForm").style.display="";$("#moGo").disabled=false}
+    },4000);
+  }catch(e){setMsg("Payment could not be started: "+e.message+". Please try again or pay through WhatsApp.","err");$("#moGo").disabled=false}
+};
 
 /* Menu, active link, back to top */
 $("#menuBtn").onclick=()=>$("#nav").classList.toggle("open");
