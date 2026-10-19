@@ -136,6 +136,31 @@ footer a{color:var(--red-light)}
 .msg.ok{background:#e7f7ec;color:#14532d}.msg.err{background:#fdeaea;color:#7f1d1d}
 .spin{display:inline-block;width:18px;height:18px;border:3px solid #ccc;border-top-color:var(--red);border-radius:50%;animation:r 1s linear infinite;vertical-align:-3px;margin-right:8px}
 @keyframes r{to{transform:rotate(360deg)}}
+.curbar{display:flex;gap:10px;align-items:center;justify-content:center;flex-wrap:wrap;margin-bottom:22px}
+.curbar select,.cv select,.cv input{padding:10px 14px;border:2px solid #ddd;border-radius:10px;font-size:1rem;background:#fff}
+.conv{display:block;font-size:.85rem;color:var(--gray);font-weight:normal;margin-top:2px}
+.cv{max-width:820px;margin:0 auto 40px;background:linear-gradient(160deg,#0a0a0a,#3b0000);color:#fff;border-radius:22px;padding:34px;box-shadow:var(--shadow);text-align:center}
+.cv h3{font-size:1.6rem;margin-bottom:6px}.cv p{color:#ccc}
+.cv .row2{display:flex;gap:12px;justify-content:center;align-items:center;flex-wrap:wrap;margin:20px 0}
+.cv input{width:140px;text-align:center;font-weight:bold}
+.cv .arrow{font-size:1.8rem;color:var(--red-light)}
+.cv .big{font-size:2.8rem;font-weight:bold;color:#ffd166;text-shadow:0 0 24px rgba(255,209,102,.5);min-height:3.4rem;word-break:break-word}
+.chips{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:10px}
+.chips button{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.35);color:#fff;border-radius:50px;padding:6px 14px;cursor:pointer}
+.chips button:hover{background:var(--red)}
+.cv small{display:block;margin-top:14px;color:#aaa}
+.btn.pp{background:linear-gradient(135deg,#0070ba,#003087)}
+.mmgrid,.sendgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:26px;max-width:1100px;margin:0 auto 40px}
+.mm{text-align:center}
+.mm svg{width:150px;height:64px;margin-bottom:12px;filter:drop-shadow(0 6px 8px rgba(0,0,0,.25))}
+.mm .num{font-size:1.4rem;font-weight:bold;margin:6px 0 14px}
+.mm .pbtns{justify-content:center}
+.sub{max-width:1100px;margin:30px auto 18px;text-align:center}
+.sub h3{font-size:1.6rem}.sub p{color:var(--gray)}
+.send{background:#fff;border-radius:var(--radius);padding:26px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:8px}
+.send b{font-size:1.4rem}.send p{color:var(--gray);flex:1}
+.tag{align-self:flex-start;background:#e7f7ec;color:#14532d;font-size:.75rem;font-weight:bold;padding:3px 10px;border-radius:20px}
+.credit{text-align:center;font-size:.75rem;color:#999;margin-top:10px}.credit a{color:#999}
 .toast{position:fixed;bottom:24px;left:50%;transform:translate(-50%,100px);background:#111;color:#fff;padding:12px 26px;border-radius:50px;z-index:4000;transition:transform .3s}
 .toast.show{transform:translate(-50%,0)}
 .top{position:fixed;right:20px;bottom:20px;width:46px;height:46px;border-radius:50%;border:0;background:var(--red);color:#fff;font-size:1.3rem;cursor:pointer;box-shadow:var(--shadow);opacity:0;pointer-events:none;transition:var(--t);z-index:900}
@@ -196,6 +221,7 @@ nav a{margin:10px 0}
 <section class="section reveal" id="products">
   <div class="section-title"><h2>Featured Spiritual Rings</h2>
     <p>Tap a ring to open it. Use Next and Previous to browse the full collection.</p></div>
+  <div class="curbar"><label for="curSel"><strong>Show prices in:</strong></label><select id="curSel"></select><span id="rateNote" style="color:#666;font-size:.85rem"></span></div>
   <div class="filters" id="filters">
     <button class="on" data-f="all">All</button><button data-f="low">Under $75</button><button data-f="high">$75 and up</button>
   </div>
@@ -265,12 +291,45 @@ nav a{margin:10px 0}
 
 <section class="section reveal" id="payments">
   <div class="section-title"><h2>Payment Methods</h2><p>Tap a method to see how to pay. Always confirm the details with us on WhatsApp before sending money.</p></div>
+  <div class="cv">
+    <h3>💱 Price Converter</h3><p>Paying from abroad? See any amount in your own money.</p>
+    <div class="row2"><span style="font-size:1.3rem">$</span><input id="cvAmt" type="number" min="1" value="75" aria-label="Amount in US dollars"><span style="font-weight:bold">USD</span><span class="arrow">➜</span><select id="cvSel" aria-label="Your currency"></select></div>
+    <div class="big" id="cvOut">...</div>
+    <div class="chips" id="cvChips"></div>
+    <small id="cvNote"></small><small><a href="https://www.exchangerate-api.com" target="_blank" rel="noopener" style="color:#aaa">Rates By Exchange Rate API</a></small>
+  </div>
   <div class="pay">
+    <button class="card" data-paypal><div style="font-size:2.6rem;color:#003087;font-weight:bold;font-style:italic;margin-bottom:14px">Pay<span style="color:#0070ba">Pal</span></div><h3>PayPal</h3><small>Pay worldwide, cards accepted</small></button>
     <button class="card" data-pay="Western Union"><img src="./images/images.png" alt="Western Union"><h3>Western Union</h3><small>View receiver details</small></button>
     <button class="card" data-pay="MoneyGram"><img src="./images/images (1).png" alt="MoneyGram"><h3>MoneyGram</h3><small>View receiver details</small></button>
-    <button class="card" data-momo="MTN Mobile Money"><img src="./images/images (2).png" alt="MTN Mobile Money"><h3>MTN Mobile Money</h3><small>Pay</small></button>
-    <button class="card" data-momo="Airtel Money"><img src="./images/images.jpeg" alt="Airtel Money"><h3>Airtel Money</h3><small>Pay</small></button>
   </div>
+
+  <div class="sub"><h3>Mobile Money in Uganda</h3><p>Send to the number below, then tap I Have Paid so we can confirm your order. Please confirm the registered name with us on WhatsApp before you send.</p></div>
+  <div class="mmgrid">
+    <div class="card mm">
+      <svg viewBox="0 0 150 64" role="img" aria-label="MTN Mobile Money"><ellipse cx="75" cy="32" rx="72" ry="29" fill="#FFCB05"/><ellipse cx="75" cy="32" rx="72" ry="29" fill="none" stroke="#000" stroke-width="2"/><text x="75" y="43" text-anchor="middle" font-family="Arial Black,Arial,sans-serif" font-weight="900" font-size="34" fill="#000">MTN</text></svg>
+      <h3 style="color:#222;margin-bottom:0">MTN Mobile Money</h3>
+      <div class="num">+256 787 329 794</div>
+      <div class="pbtns"><button class="btn sm" data-copy="+256787329794">Copy Number</button><a class="btn sm" href="#" data-wa="Hello Jajja Rings, I have sent money by MTN Mobile Money to +256787329794. Here is my receipt.">I Have Paid</a></div>
+    </div>
+    <div class="card mm">
+      <svg viewBox="0 0 150 64" role="img" aria-label="Airtel Money"><rect x="2" y="4" width="146" height="56" rx="14" fill="#fff" stroke="#e40000" stroke-width="3"/><text x="75" y="43" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="36" fill="#e40000" letter-spacing="-1">airtel</text></svg>
+      <h3 style="color:#222;margin-bottom:0">Airtel Money</h3>
+      <div class="num">+256 703 591 850</div>
+      <div class="pbtns"><button class="btn sm" data-copy="+256703591850">Copy Number</button><a class="btn sm" href="#" data-wa="Hello Jajja Rings, I have sent money by Airtel Money to +256703591850. Here is my receipt.">I Have Paid</a></div>
+    </div>
+  </div>
+
+  <div class="sub"><h3>Sending From Abroad?</h3><p>These trusted money-transfer services can send money from your country straight to our MTN or Airtel Mobile Money number above. Enter the amount in UGX (use the converter above), send, and share your receipt with us on WhatsApp. Compare each service's fee and rate before you send.</p></div>
+  <div class="sendgrid">
+    <div class="send"><span class="tag">Mobile Money</span><b>WorldRemit</b><p>Send to MTN and Airtel Mobile Money in Uganda from many countries.</p><a class="btn sm" href="https://www.worldremit.com/en/uganda/mobile-money" target="_blank" rel="noopener">Open WorldRemit</a></div>
+    <div class="send"><span class="tag">Mobile Money</span><b>Remitly</b><p>Send to mobile money, bank accounts or cash pickup in Uganda.</p><a class="btn sm" href="https://www.remitly.com" target="_blank" rel="noopener">Open Remitly</a></div>
+    <div class="send"><span class="tag">Mobile Money</span><b>Sendwave</b><p>App-based transfers to MTN and Airtel wallets. Check the exchange rate shown in the app.</p><a class="btn sm" href="https://www.sendwave.com" target="_blank" rel="noopener">Open Sendwave</a></div>
+    <div class="send"><span class="tag">Pay with PayPal</span><b>Xoom (PayPal)</b><p>Already on PayPal? Xoom lets you fund transfers to Uganda with PayPal, card or bank.</p><a class="btn sm" href="https://partner.xoom.com/uganda" target="_blank" rel="noopener">Open Xoom</a></div>
+    <div class="send"><span class="tag" style="background:#e8f0fe;color:#1a3c8f">Bank Transfer</span><b>Wise</b><p>Low-cost transfers to Ugandan bank accounts. Ask us on WhatsApp for our bank details.</p><a class="btn sm" href="https://wise.com" target="_blank" rel="noopener">Open Wise</a></div>
+    <div class="send"><span class="tag" style="background:#fff4d6;color:#7a5200">Cash &amp; Cards</span><b>Western Union / MoneyGram</b><p>Send cash from an agent or online. Use the receiver details shown above.</p><a class="btn sm" href="#payments" data-pay="Western Union">View Receiver Details</a></div>
+  </div>
+  <p class="credit">Always confirm your order on WhatsApp before you send money. We are not affiliated with these services.</p>
 </section>
 
 <section class="cta" id="contact">
@@ -295,12 +354,12 @@ nav a{margin:10px 0}
     <button class="nav next" id="next" aria-label="Next ring">›</button>
     <img id="mImg" alt="">
     <div class="info">
-      <h3 id="mName"></h3><div class="price" id="mPrice"></div>
+      <h3 id="mName"></h3><div class="price"><span id="mPrice"></span><span class="conv" id="mConv"></span></div>
       <p id="mDesc"></p>
       <div class="detail"><p><strong>Best for:</strong> <span id="mFor"></span></p><p><strong>Material:</strong> Handmade ring with natural stone</p></div>
       <div class="size"><label for="mSize"><strong>Ring size:</strong></label>
         <select id="mSize"><option>Not sure yet</option><option>US 7</option><option>US 8</option><option>US 9</option><option>US 10</option><option>US 11</option><option>US 12</option><option>US 13</option></select></div>
-      <a class="btn" id="mOrder" href="#" target="_blank" rel="noopener">Order This Ring</a>
+      <div class="pbtns"><a class="btn" id="mOrder" href="#" target="_blank" rel="noopener">Order on WhatsApp</a><a class="btn pp" id="mPay" href="#" target="_blank" rel="noopener">Pay with PayPal</a></div>
       <div class="count" id="mCount"></div>
     </div>
   </div>
@@ -330,10 +389,23 @@ nav a{margin:10px 0}
       <p style="color:#666">Enter your number and amount. A payment request is sent to your phone and you confirm it with your PIN or one-time code.</p>
       <div class="field"><label for="moPhone">Mobile money number</label><input id="moPhone" type="tel" inputmode="tel" placeholder="e.g. 0771234567" autocomplete="tel"></div>
       <div class="field"><label for="moEmail">Email (for your receipt)</label><input id="moEmail" type="email" placeholder="you@example.com" autocomplete="email"></div>
-      <div class="field"><label for="moAmt">Amount (UGX)</label><input id="moAmt" type="number" min="1000" step="500" placeholder="e.g. 250000"></div>
+      <div class="field"><label for="moAmt">Amount (UGX)</label><input id="moAmt" type="number" min="1000" step="500" placeholder="e.g. 250000"><small id="moHint" style="color:#666"></small></div>
       <button class="btn" id="moGo" style="width:100%;margin-top:8px">Pay</button>
     </div>
     <div id="moMsg"></div>
+  </div>
+</div>
+
+<div class="modal" id="ppModal" role="dialog" aria-modal="true">
+  <div class="box small">
+    <button class="x" data-close aria-label="Close">✕</button>
+    <h3>Pay with PayPal</h3>
+    <p style="color:#666">Works in most countries. Pay by PayPal balance or by card. Choose a ring or type an amount in US dollars.</p>
+    <div class="chips" id="ppChips" style="margin:14px 0"></div>
+    <div class="field"><label for="ppAmt">Amount (USD)</label><input id="ppAmt" type="number" min="1" step="1" placeholder="e.g. 75"></div>
+    <div class="msg" id="ppHint" style="text-align:center"></div>
+    <div class="pbtns" style="justify-content:center"><a class="btn pp" id="ppGo" href="#" target="_blank" rel="noopener">Continue to PayPal</a><a class="btn sm" id="ppWa" href="#" target="_blank" rel="noopener" style="background:#25d366">I Have Paid</a></div>
+    <p style="font-size:.85rem;color:#666;margin-top:12px">Choose "Goods and services" in PayPal for buyer protection. After paying, tap I Have Paid so we can confirm your order.</p>
   </div>
 </div>
 
@@ -357,7 +429,7 @@ $$("[data-wa]").forEach(a=>{a.href=wa(a.dataset.wa);a.target="_blank";a.rel="noo
 function render(f="all"){
   $("#grid").innerHTML=rings.map((r,k)=>({r,k})).filter(({r})=>f=="all"||(f=="low"?r.p<75:r.p>=75)).map(({r,k})=>`
   <div class="product"><button class="product-image" data-open="${k}" aria-label="View ${r.n}"><img loading="lazy" src="${r.i}" alt="${r.n}"><span>Tap to view</span></button>
-  <div class="product-content"><h3>${r.n}</h3><p>${r.d}</p><div class="price">$${r.p}</div>
+  <div class="product-content"><h3>${r.n}</h3><p>${r.d}</p><div class="price">$${r.p}<span class="conv" data-usd="${r.p}"></span></div>
   <div class="pbtns"><button class="btn sm" data-open="${k}">View Ring</button>
   <a class="btn sm" target="_blank" rel="noopener" href="${wa("Hello Jajja Rings, I want to order the "+r.n+" ($"+r.p+").")}">Order Now</a></div></div></div>`).join("");
 }
@@ -373,6 +445,7 @@ function show(k){
   setOrder();
 }
 function setOrder(){const r=rings[cur];
+  $("#mPay").href=ppLink(r.p);$("#mConv").dataset.usd=r.p;applyCur();
   $("#mOrder").href=wa("Hello Jajja Rings, I want to order the "+r.n+" ($"+r.p+"). Ring size: "+$("#mSize").value+".")}
 $("#mSize").onchange=setOrder;
 const open=m=>{m.classList.add("open");document.body.style.overflow="hidden"};
@@ -380,6 +453,8 @@ const closeAll=()=>{clearInterval(pollT);$$(".modal").forEach(m=>m.classList.rem
 document.addEventListener("click",e=>{
   const o=e.target.closest("[data-open]");if(o){show(+o.dataset.open);open($("#ringModal"));return}
   const p=e.target.closest("[data-pay]");if(p){payOpen(p.dataset.pay);return}
+  if(e.target.closest("[data-paypal]")){ppSet();open($("#ppModal"));return}
+  const cp=e.target.closest("[data-copy]");if(cp){navigator.clipboard.writeText(cp.dataset.copy).then(()=>toast("Number copied"),()=>toast("Copy failed. Please copy manually."));return}
   const mo=e.target.closest("[data-momo]");if(mo){momoOpen(mo.dataset.momo);return}
   if(e.target.closest("[data-close]")||e.target.classList.contains("modal"))closeAll();
 });
@@ -428,6 +503,62 @@ $("#moGo").onclick=async()=>{
     },4000);
   }catch(e){setMsg("Payment could not be started: "+e.message+". Please try again or pay through WhatsApp.","err");$("#moGo").disabled=false}
 };
+
+
+/* Currency converter and PayPal */
+const PAYPAL_USER="HarunaMusanje";
+const ppLink=a=>`https://www.paypal.me/${PAYPAL_USER}/${encodeURIComponent(a)}USD`;
+let RATES={UGX:3700,KES:129,TZS:2650,RWF:1400,NGN:1500,GHS:15,ZAR:18,GBP:.78,EUR:.92,INR:84,CAD:1.37,AUD:1.52,AED:3.67,CNY:7.2,JPY:150,USD:1};
+const NAMES={USD:"US Dollar",UGX:"Ugandan Shilling",KES:"Kenyan Shilling",TZS:"Tanzanian Shilling",RWF:"Rwandan Franc",NGN:"Nigerian Naira",GHS:"Ghanaian Cedi",ZAR:"South African Rand",GBP:"British Pound",EUR:"Euro",INR:"Indian Rupee",CAD:"Canadian Dollar",AUD:"Australian Dollar",AED:"UAE Dirham",CNY:"Chinese Yuan",JPY:"Japanese Yen"};
+let CUR="USD",LIVE=false;
+const money=(v,c)=>{try{return new Intl.NumberFormat(undefined,{style:"currency",currency:c,maximumFractionDigits:v>=100||["UGX","TZS","RWF","JPY","NGN"].includes(c)?0:2}).format(v)}catch{return c+" "+Math.round(v)}};
+const conv=(usd,c)=>usd*(RATES[c]||1);
+function applyCur(){
+  $$(".conv[data-usd]").forEach(e=>{e.textContent=CUR=="USD"?"":"≈ "+money(conv(+e.dataset.usd,CUR),CUR)});
+  const n=$("#rateNote");if(n)n.textContent=CUR=="USD"?"":(LIVE?"Live rates, final price confirmed on WhatsApp":"Approximate rates, final price confirmed on WhatsApp");
+}
+let dn;try{dn=new Intl.DisplayNames(["en"],{type:"currency"})}catch{dn=null}
+const cname=c=>NAMES[c]||(dn&&dn.of(c))||c;
+function fillCurrencies(){
+  const list=Object.keys(RATES).sort((a,b)=>a=="USD"?-1:b=="USD"?1:a.localeCompare(b));
+  const o=list.map(c=>`<option value="${c}">${c} · ${cname(c)}</option>`).join("");
+  const keep=[CUR,$("#cvSel").value||"UGX"];
+  $("#curSel").innerHTML=o;$("#cvSel").innerHTML=o;$("#curSel").value=keep[0];$("#cvSel").value=RATES[keep[1]]?keep[1]:"UGX";
+}
+fillCurrencies();
+$("#curSel").onchange=e=>{CUR=e.target.value;applyCur()};
+const _render=render;render=function(f){_render(f);applyCur()};render();
+let cvShown=0;
+function cvUpdate(){
+  const usd=+$("#cvAmt").value||0,c=$("#cvSel").value,to=conv(usd,c),from=cvShown,t0=performance.now();
+  const step=t=>{const p=Math.min((t-t0)/600,1),v=from+(to-from)*(1-Math.pow(1-p,3));$("#cvOut").textContent=money(v,c);if(p<1)requestAnimationFrame(step);else cvShown=to};
+  requestAnimationFrame(step);
+  $("#cvNote").textContent=(LIVE?"Live exchange rate"+(window.RATE_TIME?" (updated "+window.RATE_TIME+")":""):"Approximate rate (could not reach live rates)")+": 1 USD ≈ "+(RATES[c]||1).toLocaleString(undefined,{maximumFractionDigits:2})+" "+c+". We confirm the final amount on WhatsApp.";
+  $("#moHint").textContent=RATES.UGX?`Tip: $1 ≈ UGX ${Math.round(RATES.UGX).toLocaleString()}`:"";
+}
+$("#cvAmt").oninput=cvUpdate;$("#cvSel").onchange=cvUpdate;
+$("#cvChips").innerHTML=rings.map(r=>`<button data-usd="${r.p}">${r.n.replace(" Ring","")} $${r.p}</button>`).join("");
+$("#cvChips").onclick=e=>{const b=e.target.closest("button");if(b){$("#cvAmt").value=b.dataset.usd;cvUpdate()}};
+cvUpdate();
+function loadRates(){
+  fetch("https://open.er-api.com/v6/latest/USD").then(r=>r.json()).then(d=>{
+    if(d&&d.rates&&d.rates.UGX){RATES=Object.assign({},d.rates);LIVE=true;
+      const u=d.time_last_update_utc?new Date(d.time_last_update_utc):null;
+      window.RATE_TIME=u&&!isNaN(u)?u.toLocaleString(undefined,{dateStyle:"medium",timeStyle:"short"}):"";
+      fillCurrencies();applyCur();cvUpdate();
+    }
+  }).catch(()=>{});
+}
+loadRates();setInterval(loadRates,30*60*1000);
+
+/* PayPal popup */
+function ppSet(){const a=+$("#ppAmt").value;const ok=a>=1;
+  $("#ppGo").href=ok?ppLink(a):"#";$("#ppGo").style.opacity=ok?1:.5;$("#ppGo").style.pointerEvents=ok?"auto":"none";
+  $("#ppWa").href=wa(`Hello Jajja Rings, I have paid $${a||""} by PayPal (to ${PAYPAL_USER}). Please confirm my order.`);
+  $("#ppHint").textContent=ok?`You pay $${a}`+(CUR!="USD"?` (≈ ${money(conv(a,CUR),CUR)})`:""):"Enter an amount of $1 or more.";}
+$("#ppChips").innerHTML=rings.map(r=>`<button data-usd="${r.p}">${r.n.replace(" Ring","")} $${r.p}</button>`).join("");
+$("#ppChips").onclick=e=>{const b=e.target.closest("button");if(b){$("#ppAmt").value=b.dataset.usd;ppSet()}};
+$("#ppAmt").oninput=ppSet;
 
 /* Menu, active link, back to top */
 $("#menuBtn").onclick=()=>$("#nav").classList.toggle("open");
